@@ -1,7 +1,6 @@
 require('dotenv').config();
 const twitterAPI = require('twitter');
 const fs = require('fs');
-const dirName = require('path').dirname;
 const client = new twitterAPI({
 	consumer_key: process.env.TWITTER_CONSUMER_KEY,
 	consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -10,35 +9,25 @@ const client = new twitterAPI({
 });
 const readArchive = (file) => {
 	return new Promise((resolve, reject) => {
-		const dataPath = dirName(file);
-		fs.access(dataPath, (err) => {
+		fs.readFile(file, 'utf8', (err, contents) => {
 			if (err) {
-				fs.mkdir(dataPath, (err) => reject(err));
+				fs.writeFile(file, JSON.stringify({}), (err) => reject(err));
 				resolve({});
-			} else {
-				fs.readFile(file, 'utf8', (err, contents) => {
-					if (err) reject(err);
-					else resolve(JSON.parse(contents));
-				});
-			}
+			} else resolve(JSON.parse(contents));
 		});
 	});
 };
 const writeArchive = (file, contents) => {
 	return new Promise((resolve, reject) => {
-		const dataPath = dirName(file);
-		fs.access(dataPath, (err) => {
-			if (err) fs.mkdir(dataPath, (err) => reject(err));
-			fs.writeFile(file, contents, 'utf8', (err) => {
-				if (err) reject(err);
-				else resolve(true);
-			});
+		fs.writeFile(file, contents, 'utf8', (err) => {
+			if (err) reject(err);
+			else resolve(true);
 		});
 	});
 };
 
 module.exports = async () => {
-	const tweets = await readArchive('./data/tweets.json').catch((err) =>
+	const tweets = await readArchive('./tweets.json').catch((err) =>
 		console.log(err)
 	);
 
@@ -59,7 +48,7 @@ module.exports = async () => {
 		tweets[tweet.id] = tweet;
 	});
 
-	await writeArchive('./data/tweets.json', JSON.stringify(tweets));
+	await writeArchive('./tweets.json', JSON.stringify(tweets));
 
 	return tweets;
 };
