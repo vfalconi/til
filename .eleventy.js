@@ -1,4 +1,5 @@
 const getTweets = require('./tweets');
+const htmlmin = require('html-minifier');
 const { DateTime } = require('luxon');
 
 module.exports = function (eleventyConfig) {
@@ -28,12 +29,25 @@ module.exports = function (eleventyConfig) {
 		return DateTime.fromFormat(dateStr, inFormat, opt).toISO();
 	});
 
+	eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
+		if (outputPath.endsWith('.html') && process.env.ENVIRONMENT !== 'local') {
+			let minified = htmlmin.minify(content, {
+				useShortDoctype: true,
+				removeComments: true,
+				collapseWhitespace: true,
+			});
+			return minified;
+		}
+
+		return content;
+	});
+
 	eleventyConfig.addPassthroughCopy('assets');
 
 	return {
 		dir: {
 			input: 'templates',
-			output: 'build',
+			output: process.env.BUILD_PATH,
 			layouts: 'layouts',
 		},
 		templateFormats: ['njk', 'html'],
