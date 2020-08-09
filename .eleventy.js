@@ -42,6 +42,13 @@ module.exports = function (eleventyConfig) {
 		return content;
 	});
 
+	eleventyConfig.addFilter('RSSTimeFormat', (dateStr) => {
+		const inFormat = 'EEE MMM dd HH:mm:ss ZZZ yyyy';
+		const outFormat = 'yyyy-MM-ddTHH:mm:ssZZZ';
+		const opt = { zone: 'America/Chicago' };
+		return DateTime.fromFormat(dateStr, inFormat, opt).toFormat(outFormat);
+	});
+
 	eleventyConfig.addPassthroughCopy('assets');
 
 	return {

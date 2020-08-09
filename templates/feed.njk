@@ -1,0 +1,32 @@
+---
+permalink: feed.xml
+---
+{% set feedUpdated = '' %}
+{% set tweetEntries %}
+	{% for tweet in collections.tweets %}
+	{% set permalink = site.url ~ '/post/' ~ tweet.id_str %}
+	{% set feedUpdated = tweet.created_at | RSSTimeFormat %}
+	<entry>
+    <title>{{ tweet.created_at | timestampFromTweet }}</title>
+    <link href="{{ permalink }}"/>
+    <updated>{{ tweet.created_at | RSSTimeFormat }}</updated>
+    <id>{{ permalink }}</id>
+    <content type="html">
+			{{ tweet.text }}
+		</content>
+		<webfeeds:featuredImage url="{{ site.url ~ post.cover_image.uri }}" />
+  </entry>
+	{% endfor %}
+{% endset %}
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
+  <title>{{ site.title }}{{ t1 }}</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <link href="{{ site.feed.url }}" rel="self"/>
+  <link href="{{ site.url }}"/>
+  <updated>{{ feedUpdated }}</updated>
+  <id>{{ site.feed.id }}</id>
+	<author>
+    <name>vince falconi</name>
+  </author>
+	{{ tweetEntries|safe }}
+</feed>

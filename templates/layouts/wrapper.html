@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/til/assets/styles.css" />
-<meta name="description" content="{{ tweet.text | default('Today I Learned: sometimes it's helpful, sometimes it is not.') }}" />
+<meta name="description" content="{{ tweet.text | default(site.description) }}" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@vincefalconi" />
-<meta name="twitter:creator" content="@vincefalconi" />
-<meta name="twitter:title" content="{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}Today I Learned @ tattooed.dev" />
-<meta name="twitter:description" content="{{ tweet.text | default('Today I Learned: sometimes it's helpful, sometimes it is not.') }}" />
+<meta name="twitter:site" content="{{ site.handle }}" />
+<meta name="twitter:creator" content="{{ site.handle }}" />
+<meta name="twitter:title" content="{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}{{ site.title }}" />
+<meta name="twitter:description" content="{{ tweet.text | default({{ site.description }}) }}" />
 <meta name="twitter:image" content="{{ site.url }}{{ cover_image.uri | default(site.ogp.image) }}" />
-<title>{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}Today I Learned @ tattooed.dev</title>
+<title>{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}{{ site.title }}</title>
 <header>
 	<h1>Today I Learned</h1>
 	<p><span>Sometimes it's helpful,</span> sometimes it is <em>not</em>.</p>
