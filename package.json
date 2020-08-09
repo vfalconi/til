@@ -18,7 +18,10 @@
   "homepage": "https://github.com/vfalconi/til#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "html-minifier": "^4.0.0",
     "luxon": "^1.24.1",
+    "node-cron": "^2.0.3",
+    "shelljs": "^0.8.4",
     "twitter": "^1.7.1"
   }
 }
