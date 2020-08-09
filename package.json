@@ -18,6 +18,7 @@
   "homepage": "https://github.com/vfalconi/til#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "luxon": "^1.24.1",
     "twitter": "^1.7.1"
   }
 }

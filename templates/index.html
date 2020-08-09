@@ -1,0 +1,10 @@
+---
+layout: wrapper.html
+---
+
+{% for tweet in collections.tweets %}
+	<article class="tweet">
+		<p class="tweet-text">{{ tweet.text }}</p>
+		<a href="/post/{{ tweet.id_str }}"><time datetime="{{ tweet.created_at|machineTimeFromTweet }}">{{ tweet.created_at | humanTimeFromTweet }}</time></a>
+	</article>
+{% endfor %}

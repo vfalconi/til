@@ -1,0 +1,79 @@
+:root {
+	font-size: 16px;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: #160033;
+	background-image: url(/assets/cross-stripes.png);
+	font-family: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
+		'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif', Georgia, serif;
+}
+
+@media screen and (min-width: 611px) {
+	body {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+header {
+	background-color: rgba(48, 0, 51, 0.5);
+	color: white;
+	position: relative;
+	max-width: 400px;
+	padding: 1rem;
+	overflow: hidden;
+	margin: 2rem;
+	box-sizing: border-box;
+	grid-column: 4 / 7;
+	transform: rotate(5deg);
+}
+
+header span {
+	display: block;
+}
+
+h1,
+[role='subheading'] {
+	text-shadow: 2px 2px #111;
+}
+
+header:after {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 100px;
+	background-image: url(/assets/lightbulb.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	transform: rotate(25deg) scale(2);
+	opacity: 0.2;
+}
+
+main {
+	background-color: white;
+	grid-column: 2 / 5;
+	align-self: stretch;
+	margin: 2rem;
+	box-sizing: border-box;
+	padding: 1rem;
+	box-shadow: -1rem 1rem #33002a;
+	border: 8px solid #160033;
+}
+
+.tweet-text {
+	font-size: 200%;
+}
+
+.tweet + .tweet {
+	margin-top: 3rem;
+}
