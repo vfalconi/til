@@ -7,7 +7,7 @@
 	"feed": {
 		"filename": "feed.xml",
 		"path": "feed/feed.xml",
-		"url": "https://tattooed.dev/feed.xml",
-		"id": "https://tattooed.dev/"
+		"url": "https://tattooed.dev/til/feed.xml",
+		"id": "https://tattooed.dev/til/"
 	}
 }
