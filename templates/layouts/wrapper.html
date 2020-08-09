@@ -2,8 +2,16 @@
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@vincefalconi" />
+<meta name="twitter:creator" content="@vincefalconi" />
+<meta name="twitter:title" content="{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}Today I Learned @ tattooed.dev" />
+<meta name="twitter:description" content="{{ tweet.text | default('Today I Learned: sometimes it's helpful, sometimes it is not.') }}" />
+<meta name="twitter:image" content="{{ site.url }}{{ cover_image.uri | default(site.ogp.image) }}" />
+
 <link rel="stylesheet" href="/assets/styles.css"/>
-<title>Today I Learned | tattooed.dev</title>
+<title>{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}Today I Learned @ tattooed.dev</title>
 <header>
 	<h1>Today I Learned</h1>
 	<p><span>Sometimes it's helpful,</span> sometimes it is <em>not</em>.</p>
@@ -11,3 +19,7 @@
 <main role="main">
 	{{ content }}
 </main>
+<footer>
+	<p class="footer-content"><a href="https://github.com/vfalconi/til" class="source-link" rel="noreferrer" target="_blank">view source</a>.</p>
+	<p class="footer-content">built with <a href="https://11ty.io" class="source-link" rel="noreferrer" target="_blank">eleventy</a>.</p>
+</footer>

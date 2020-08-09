@@ -1,5 +1,8 @@
 :root {
 	font-size: 16px;
+	--box-shadow: #0084ff;
+	--border: #bb00ff;
+	--header: #bb00ff;
 }
 
 html,
@@ -9,7 +12,7 @@ body {
 }
 
 body {
-	background-color: #160033;
+	background-color: #00ffbb;
 	background-image: url(/assets/cross-stripes.png);
 	font-family: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
 		'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif', Georgia, serif;
@@ -23,7 +26,7 @@ body {
 }
 
 header {
-	background-color: rgba(48, 0, 51, 0.5);
+	background-color: var(--header);
 	color: white;
 	position: relative;
 	max-width: 400px;
@@ -32,7 +35,7 @@ header {
 	margin: 2rem;
 	box-sizing: border-box;
 	grid-column: 4 / 7;
-	transform: rotate(5deg);
+	box-shadow: 1rem 1rem var(--box-shadow);
 }
 
 header span {
@@ -41,6 +44,7 @@ header span {
 
 h1,
 [role='subheading'] {
+	font-size: 250%;
 	text-shadow: 2px 2px #111;
 }
 
@@ -65,15 +69,41 @@ main {
 	align-self: stretch;
 	margin: 2rem;
 	box-sizing: border-box;
+	padding: 2rem;
+	box-shadow: -1rem 1rem var(--box-shadow);
+	border: 8px solid var(--border);
+}
+
+footer {
+	grid-column: 2 / 5;
+	justify-self: center;
+	width: -moz-fit-content;
+	width: fit-content;
 	padding: 1rem;
-	box-shadow: -1rem 1rem #33002a;
-	border: 8px solid #160033;
+	margin: 2rem;
+	background-color: var(--header);
+	box-shadow: 0.5rem 0.5rem var(--box-shadow);
+	font-family: monospace;
+}
+
+.footer-content {
+	margin: 0;
+	line-height: 1;
+}
+
+.footer-content + .footer-content {
+	margin-top: 1rem;
 }
 
 .tweet-text {
 	font-size: 200%;
+	margin-top: 0;
 }
 
 .tweet + .tweet {
 	margin-top: 3rem;
+}
+
+.source-link {
+	color: white;
 }
