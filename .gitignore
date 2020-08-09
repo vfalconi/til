@@ -1,5 +1,7 @@
 build
 data/tweets.json
+assets/*.svg
+assets/*.png
 
 # Logs
 logs
