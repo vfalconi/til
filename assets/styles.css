@@ -13,7 +13,7 @@ body {
 
 body {
 	background-color: #00ffbb;
-	background-image: url(/assets/cross-stripes.png);
+	background-image: url(/til/assets/cross-stripes.png);
 	font-family: Constantia, 'Lucida Bright', Lucidabright, 'Lucida Serif', Lucida,
 		'DejaVu Serif', 'Bitstream Vera Serif', 'Liberation Serif', Georgia, serif;
 }
@@ -56,7 +56,7 @@ header:after {
 	bottom: 0;
 	right: 0;
 	width: 100px;
-	background-image: url(/assets/lightbulb.svg);
+	background-image: url(/til/assets/lightbulb.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 	transform: rotate(25deg) scale(2);
