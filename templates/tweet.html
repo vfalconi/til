@@ -9,8 +9,10 @@ permalink: 'post/{{ tweet.id_str }}/'
 ---
 <p class="tweet-text">{{ tweet.text }}</p>
 <time datetime="{{ tweet.created_at|machineTimeFromTweet }}">{{ tweet.created_at | timestampFromTweet }}</time>
-<ul>
-	<li><a href="/">Home</a></li>
-	<li><a href="/post/{{ tweet.id_str }}" aria-current>Permalink</a></li>
-	<li><a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str }}" target="_blank" rel="noreferrer">Link to Tweet</a></li>
-</ul>
+<nav role="navigation" aria-label="Page navigation">
+	<ul class="nav">
+		<li><a href="/">Home</a></li>
+		<li><a href="/post/{{ tweet.id_str }}" aria-current>Permalink</a></li>
+		<li><a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str }}" target="_blank" rel="noreferrer">Link to Tweet</a></li>
+	</ul>
+</nav>

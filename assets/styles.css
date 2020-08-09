@@ -107,3 +107,8 @@ footer {
 .source-link {
 	color: white;
 }
+
+.nav {
+	padding-left: 0;
+	list-style: none;
+}
