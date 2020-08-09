@@ -1,7 +1,7 @@
 build
 tweets.json
-assets/*.svg
-assets/*.png
+*.svg
+*.png
 
 # Logs
 logs

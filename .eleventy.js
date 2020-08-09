@@ -1,6 +1,7 @@
 const getTweets = require('./tweets');
 const htmlmin = require('html-minifier');
 const { DateTime } = require('luxon');
+const siteData = require('./templates/_data/site');
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addCollection('tweets', async (collection) => {
@@ -46,6 +47,16 @@ module.exports = function (eleventyConfig) {
 		const inFormat = 'EEE MMM dd HH:mm:ss ZZZ yyyy';
 		const opt = { zone: 'America/Chicago' };
 		return DateTime.fromFormat(dateStr, inFormat, opt).toISO();
+	});
+
+	eleventyConfig.addShortcode('url', function (uri) {
+		if (
+			process.env.ENVIRONMENT === 'production' ||
+			process.env.ENVIRONMENT === 'prod'
+		) {
+			return `${siteData.url}${uri}`;
+		}
+		return uri;
 	});
 
 	eleventyConfig.addPassthroughCopy('assets');

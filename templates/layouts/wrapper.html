@@ -1,15 +1,19 @@
+---
+templateEngineOverride: njk
+---
 <!DOCTYPE html>
-
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/til/assets/styles.css" />
+<base href="{% url '/' %}" />
+<link rel="stylesheet" href="{% url 'assets/styles.css' %}" />
+<link rel="alternate" href="{{ site.feed.url }}" type="application/rss+xml"/>
 <meta name="description" content="{{ tweet.text | default(site.description) }}" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="{{ site.handle }}" />
 <meta name="twitter:creator" content="{{ site.handle }}" />
 <meta name="twitter:title" content="{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}{{ site.title }}" />
-<meta name="twitter:description" content="{{ tweet.text | default({{ site.description }}) }}" />
+<meta name="twitter:description" content="{{ tweet.text | default( site.description ) }}" />
 <meta name="twitter:image" content="{{ site.url }}{{ cover_image.uri | default(site.ogp.image) }}" />
 <title>{% if tweet.created_at %}{{ tweet.created_at|humanTimeFromTweet }} | {% endif %}{{ site.title }}</title>
 <header>
@@ -17,7 +21,7 @@
 	<p><span>Sometimes it's helpful,</span> sometimes it is <em>not</em>.</p>
 </header>
 <main role="main">
-	{{ content }}
+	{{ content|safe }}
 </main>
 <footer>
 	<p class="footer-content">this is content on <a href="https://tattooed.dev/" class="source-link">tattooed.dev</a></p>
