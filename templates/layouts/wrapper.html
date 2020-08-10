@@ -6,7 +6,7 @@ templateEngineOverride: njk
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="{% url '/' %}" />
-<link rel="stylesheet" href="{% url 'assets/styles.css' %}" />
+<link rel="stylesheet" href="{% url '/assets/styles.css' %}" />
 <link rel="alternate" href="{{ site.feed.url }}" type="application/rss+xml"/>
 <meta name="description" content="{{ tweet.text | default(site.description) }}" />
 <meta name="twitter:card" content="summary" />
